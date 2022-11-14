@@ -15,8 +15,7 @@ def index(request):
     return render(request, template, {
         'title': 'Последние обновления на сайте',
         'posts': posts,
-    }
-                  )
+    })
 
 
 def group(request, slug):
@@ -35,5 +34,4 @@ def group(request, slug):
         'group': group,
         'group_posts': group_posts,
         'posts': posts_ordered,
-    }
-                  )
+    })
