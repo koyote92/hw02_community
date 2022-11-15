@@ -6,9 +6,8 @@ NUMBER_OF_POSTS: int = 10
 
 
 def index(request):
-    template = 'posts/index.html'
     posts = Post.objects.select_related('author')[:NUMBER_OF_POSTS]
-    return render(request, template, {
+    return render(request, 'posts/index.html', {
         'title': 'Последние обновления на сайте',
         'posts': posts,
     })
