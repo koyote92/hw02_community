@@ -16,9 +16,9 @@ def index(request):
 
 def group(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts_ordered = group.posts.select_related('author')[:NUMBER_OF_POSTS]
+    group_posts = group.posts.select_related('author')[:NUMBER_OF_POSTS]
     return render(request, 'posts/group_list.html', {
         'title': 'Все записи сообщества',
         'group': group,
-        'posts': posts_ordered,
+        'posts': group_posts,
     })
