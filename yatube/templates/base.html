@@ -7,9 +7,11 @@
 Хотел вынести вообще все теги <head> в отдельный темплейт head.html, но меня
 так бесят кривущие автотесты, что я уже боюсь что-то трогать. -->
   <head>
+      {% block title %}
       <title>
-          {{ title }}
+          Базовый заголовок
       </title>
+      {% endblock title %}
       {% include 'posts/includes/header.html' %}
   </head>
   <body>
