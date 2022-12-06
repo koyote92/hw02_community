@@ -2,11 +2,15 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
-from .forms import CreationForm
+from .forms import CreationForm, ContactForm
 
 
 class SignUp(CreateView):
     form_class = CreationForm
-    # После успешной регистрации перенаправляем пользователя на главную.
     success_url = reverse_lazy('posts:index')
     template_name = 'users/signup.html'
+
+
+def user_contact(request):
+    form = ContactForm()
+    return render(request, 'users/contact.html', {'form': form})
