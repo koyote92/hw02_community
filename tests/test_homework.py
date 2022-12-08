@@ -217,7 +217,7 @@ class TestGroupView:
         group = post_with_group.group
         html = response.content.decode()
 
-        templates_list = ['group_list.html', 'posts/group_list.html']
+        templates_list = ['group_post.html', 'posts/group_post.html']
         html_template = select_template(templates_list).template.source
 
         assert search_refind(r'{%\s*for\s+.+in.*%}', html_template), (

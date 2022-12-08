@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}<title>Пост первые 30</title>{% endblock title %}
+{% block content %}
+    <div class="container py-5">
+        <ul>
+            <li>
+                Автор: <a
+                    href="{% url 'posts:profile' post.author.username %}">{{ post.author.get_full_name }}</a>
+            </li>
+            {% if post.group %}
+                <li>
+                Группа: <a href="{% url 'posts:group' post.group.slug %}">{{ post.group }}</a>
+            {% endif %}
+            <li>
+                Дата публикации: {{ post.pub_date|date:"d E Y" }}
+            </li>
+            </li>
+            <li>
+                Всего постов автора: <span>{{ post.author.posts.count }}</span>
+            </li>
+            <li>
+                <a href="{% url 'posts:profile' post.author.username %}">
+                    Все посты пользователя
+                </a>
+            </li>
+        </ul>
+        <article>
+            <p>
+                {{ post.text }}
+            </p>
+        </article>
+    </div>
+{% endblock content %}

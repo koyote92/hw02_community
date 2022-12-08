@@ -2,12 +2,14 @@
 {% block title %}<title>{{ group.title }}</title>{% endblock title %}
 {% block content %}
     <div class="container py-5">
-        <h1>Все записи сообщества {{ group }}</h1>
-        {% for post in posts %}
+        <h1>Все записи группы @{{ group }}</h1>
+        <br>
+        {% for post in page_obj %}
             <article>
                 <ul>
                     <li>
-                        Автор: {{ post.author.get_full_name }}
+                        Автор: <a
+                            href="{% url 'posts:profile' post.author.username %}">{{ post.author.get_full_name }}</a>
                     </li>
                     <li>
                         Дата публикации: {{ post.pub_date|date:"d E Y" }}
@@ -16,9 +18,11 @@
                 <p>
                     {{ post.text }}
                 </p>
+            <a href="{% url 'posts:post_details' post.id %}">Подробная информация</a>
             </article>
             {% if not forloop.last %}
                 <hr>{% endif %}
         {% endfor %}
+        {% include 'posts/includes/paginator.html' %}
     </div>
 {% endblock %}
