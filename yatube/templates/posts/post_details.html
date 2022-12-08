@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}<title>Пост первые 30</title>{% endblock title %}
+{% block title %}<title>Пост {{ post.text|truncatechars:30 }}</title>{% endblock title %}
 {% block content %}
     <div class="container py-5">
         <ul>
