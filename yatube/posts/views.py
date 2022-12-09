@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 
+from .forms import PostEditionForm, PostCreationForm
 from .models import Post, Group, User
 
 
@@ -43,9 +44,27 @@ def profile(request, username):
     return render(request, 'posts/profile.html', context)
 
 
+"""Код ниже в процессе разработки."""
+
+
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     context = {
         'post': post,
     }
     return render(request, 'posts/post_details.html', context)
+
+
+def post_edit(request, post_id):
+    if request.method == 'POST':
+        form = PostEditionForm(request.POST)
+        if not form.is_valid():
+            form = PostEditionForm()
+            return render(request, 'posts/index.html', {'form': form})
+        form = PostEditionForm()
+        text = form.cleaned_data['text']
+        group = form.cleaned_data['group']
+        return redirect('posts/post_details.html', id=post_id)
+
+    form = PostEditionForm()
+    return render(request, 'posts/index.html', {'form': form})

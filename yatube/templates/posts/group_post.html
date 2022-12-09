@@ -2,7 +2,7 @@
 {% block title %}<title>{{ group.title }}</title>{% endblock title %}
 {% block content %}
     <div class="container py-5">
-        <h1>Все записи группы @{{ group }}</h1>
+        <h1>Все записи группы {{ group }}</h1>
         <br>
         {% for post in page_obj %}
             <article>

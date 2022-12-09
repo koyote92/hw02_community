@@ -2,7 +2,7 @@
 {% block title %}<title>Профайл пользователя @{{ author.username }}</title>{% endblock title %}
 {% block content %}
     <div class="container py-5">
-        <h1>Все посты пользователя @{{ author.get_full_name }} </h1>
+        <h1>Все посты пользователя {{ author.get_full_name }} </h1>
         <h3>Всего постов: {{ author.posts.count }} </h3>
         <br>
         {% for post in page_obj %}
@@ -24,7 +24,6 @@
             </article>
             {% if not forloop.last %}
                 <hr>{% endif %}
-            <a href="{% url 'posts:group' post.group.slug %}">Все записи группы {{ post.group }}</a>
         {% endfor %}
         {% include 'posts/includes/paginator.html' %}
     </div>
