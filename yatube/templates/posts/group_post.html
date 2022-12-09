@@ -18,7 +18,7 @@
                 <p>
                     {{ post.text }}
                 </p>
-            <a href="{% url 'posts:post_details' post.id %}">Подробная информация</a>
+                <a href="{% url 'posts:post_details' post.id %}">Подробная информация</a>
             </article>
             {% if not forloop.last %}
                 <hr>{% endif %}

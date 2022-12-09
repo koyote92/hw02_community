@@ -44,15 +44,15 @@ def profile(request, username):
     return render(request, 'posts/profile.html', context)
 
 
-"""Код ниже в процессе разработки."""
-
-
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     context = {
         'post': post,
     }
     return render(request, 'posts/post_details.html', context)
+
+
+"""Код ниже в процессе разработки."""
 
 
 def post_edit(request, post_id):
