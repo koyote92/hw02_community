@@ -61,7 +61,6 @@ def post_edit(request, post_id):
         if not form.is_valid():
             form = PostEditionForm()
             return render(request, 'posts/index.html', {'form': form})
-        form = PostEditionForm()
         text = form.cleaned_data['text']
         group = form.cleaned_data['group']
         return redirect('posts/post_details.html', id=post_id)
